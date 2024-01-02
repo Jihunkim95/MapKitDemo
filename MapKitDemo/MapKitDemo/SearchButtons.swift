@@ -14,6 +14,8 @@ struct SearchButtons: View {
     @Binding var position: MapCameraPosition
     
     @Binding var searchResults: [MKMapItem]
+    
+    var visibleResion: MKCoordinateRegion?
 
     var body: some View {
         HStack {
@@ -73,8 +75,8 @@ struct SearchButtons: View {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
         request.resultTypes = .pointOfInterest
-        request.region = MKCoordinateRegion(
-            center: .home, // 이 부분은 유효한 CLLocationCoordinate2D로 교체해야 합니다.
+        request.region = visibleResion ?? MKCoordinateRegion(
+            center: .home, 
             span: MKCoordinateSpan(latitudeDelta: 0.0125, longitudeDelta: 0.0125)
         )
         Task {

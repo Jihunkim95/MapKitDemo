@@ -32,6 +32,10 @@ struct ContentView: View {
     
     // 검색 결과 업데이트
     @State private var position: MapCameraPosition = .automatic
+    
+    //지도에 표시된 지역 추가
+    @State private var visibleResion: MKCoordinateRegion?
+    
     //장소를 표시할때 사용
     @State private var searchResults: [MKMapItem] = []
     
@@ -63,7 +67,7 @@ struct ContentView: View {
             .safeAreaInset(edge: .bottom){
                 HStack {
                     Spacer()
-                    SearchButtons(position: $position, searchResults: $searchResults)
+                    SearchButtons(position: $position, searchResults: $searchResults, visibleResion: visibleResion)
                         .padding(.top)
                     Spacer()
                 }
@@ -73,7 +77,10 @@ struct ContentView: View {
         .onChange(of: searchResults){
             position = .automatic
         }
-        
+        // 업데이트 된 내역을 불러옴
+        .onMapCameraChange { context in
+            visibleResion = context.region
+        }
     }
 }
 
