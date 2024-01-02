@@ -38,10 +38,12 @@ struct ContentView: View {
     
     //장소를 표시할때 사용
     @State private var searchResults: [MKMapItem] = []
+    //마커선택
+    @State private var selectedResult: MKMapItem?
     
     var body: some View {
         VStack {
-            Map(position: $position){
+            Map(position: $position, selection: $selectedResult){
                 //Maker or Annotation
                 Annotation("민정이 집", coordinate: .home){
                     ZStack{
