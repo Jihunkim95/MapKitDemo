@@ -46,6 +46,25 @@ struct SearchButtons: View {
                 Label("North Shore", systemImage: "water.waves")
             }
             .buttonStyle(.bordered)
+            
+            //경사
+            Button{
+                position = .camera(
+                    MapCamera(
+                        centerCoordinate: CLLocationCoordinate2D(
+                            latitude: 37.65,
+                            longitude: 127.0739
+                        ),
+                        distance: 980,
+                        heading: 242,
+                        pitch: 60
+                    )
+                )
+            } label: {
+                Label("3D Carmera", systemImage: "view.3d")
+            }
+            .buttonStyle(.bordered)
+
         }
         .labelStyle(.iconOnly)
     }
