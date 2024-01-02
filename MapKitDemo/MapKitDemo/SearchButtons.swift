@@ -11,6 +11,8 @@ import MapKit
 
 struct SearchButtons: View {
     
+    @Binding var position: MapCameraPosition
+    
     @Binding var searchResults: [MKMapItem]
 
     var body: some View {
@@ -30,6 +32,20 @@ struct SearchButtons: View {
                 Label("Beaches", systemImage: "beach.umbrella")
             }
             .buttonStyle(.borderedProminent)
+            
+            Button{
+                position = .region(.boston)
+            } label: {
+                Label("Boston", systemImage: "building.2")
+            }
+            .buttonStyle(.bordered)
+            
+            Button{
+                position = .region(.northShore)
+            } label: {
+                Label("North Shore", systemImage: "water.waves")
+            }
+            .buttonStyle(.bordered)
         }
         .labelStyle(.iconOnly)
     }

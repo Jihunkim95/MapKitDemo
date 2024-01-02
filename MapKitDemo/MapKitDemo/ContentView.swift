@@ -12,7 +12,22 @@ extension CLLocationCoordinate2D {
 //    static let home = CLLocationCoordinate2D(latitude: 37.65, longitude: 127.0739)
     static let home = CLLocationCoordinate2D(latitude: 42.354528, longitude: -71.068369)
 }
-
+// 도시 해안 좌표
+extension MKCoordinateRegion{
+    static let boston = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(
+            latitude: 42.360256, longitude: -71.057279),
+        span: MKCoordinateSpan(
+            latitudeDelta: 0.1, longitudeDelta: 0.1)
+        )
+    
+    static let northShore = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(
+            latitude: 42.547408, longitude: -70.870085),
+        span: MKCoordinateSpan(
+            latitudeDelta: 0.5, longitudeDelta: 0.5)
+        )
+}
 struct ContentView: View {
     
     // 검색 결과 업데이트
@@ -48,7 +63,7 @@ struct ContentView: View {
             .safeAreaInset(edge: .bottom){
                 HStack {
                     Spacer()
-                    SearchButtons(searchResults: $searchResults)
+                    SearchButtons(position: $position, searchResults: $searchResults)
                         .padding(.top)
                     Spacer()
                 }
