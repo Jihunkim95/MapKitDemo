@@ -29,6 +29,7 @@ struct SearchButtons: View {
             } label: {
                 Label("Beaches", systemImage: "beach.umbrella")
             }
+            .buttonStyle(.borderedProminent)
         }
         .labelStyle(.iconOnly)
     }

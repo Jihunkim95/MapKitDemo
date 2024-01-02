@@ -14,12 +14,15 @@ extension CLLocationCoordinate2D {
 }
 
 struct ContentView: View {
-    //장소를 표시할때 사용된다
+    
+    // 검색 결과 업데이트
+    @State private var position: MapCameraPosition = .automatic
+    //장소를 표시할때 사용
     @State private var searchResults: [MKMapItem] = []
     
     var body: some View {
         VStack {
-            Map{
+            Map(position: $position){
                 //Maker or Annotation
                 Annotation("민정이 집", coordinate: .home){
                     ZStack{
@@ -36,7 +39,6 @@ struct ContentView: View {
                 
                 ForEach(searchResults, id: \.self){ result in
                     Marker(item: result)
-                    
                 }
             }
             //mapStyle 1.
@@ -53,7 +55,10 @@ struct ContentView: View {
             }
             .background(.thinMaterial)
         }
-        .padding()
+        .onChange(of: searchResults){
+            position = .automatic
+        }
+        
     }
 }
 
