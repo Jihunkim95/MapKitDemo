@@ -16,7 +16,19 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Map{
-                Marker("민정이 집", coordinate: .home)
+                //Maker or Annotation
+                Annotation("민정이 집", coordinate: .home){
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(.background)
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(.secondary, lineWidth: 5)
+                        Image(systemName: "house")
+                            .padding(5)
+                    }
+                }
+                //타이틀 숨기기
+//                .annotationTitles(.hidden)
             }
         }
         .padding()
