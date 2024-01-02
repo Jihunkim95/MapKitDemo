@@ -10,6 +10,7 @@ import MapKit
 
 extension CLLocationCoordinate2D {
     static let home = CLLocationCoordinate2D(latitude: 37.65, longitude: 127.0739)
+//    static let home = CLLocationCoordinate2D(latitude: 42.354528, longitude: -71.068369)
 }
 
 struct ContentView: View {
@@ -30,6 +31,10 @@ struct ContentView: View {
                 //타이틀 숨기기
 //                .annotationTitles(.hidden)
             }
+            //mapStyle 1.
+//            .mapStyle(.imagery(elevation: .realistic))
+            //mapStyle 2.
+            .mapStyle(.standard(elevation: .realistic))
         }
         .padding()
     }
